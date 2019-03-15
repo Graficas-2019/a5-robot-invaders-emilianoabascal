@@ -1,0 +1,104 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Three.js Morph targets</title>
+
+<link rel="stylesheet" href="libs/jquery-ui/jquery-ui.css" />
+<link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet" href="css/threejsshadows.css" />
+
+<script src="libs/jquery-3.3.1/jquery-3.3.1.js"></script>
+<script src="libs/jquery-ui/jquery-ui.js"></script>
+
+<script src="libs/three.js/three.js"></script>
+<script src="libs/three.js/loaders/GLTFLoader.js"></script>
+
+<script src="libs/three.js/loaders/inflate.min.js"></script>
+<script src="libs/three.js/loaders/FBXLoader.js"></script>
+
+<script src="libs/keyframe.js/keyframe.js"></script>
+
+<script src="game.js"></script>
+
+<script type="text/javascript">
+
+
+function initControls()
+{
+    $("input[name=animation]").click(
+        function() {
+            var id = $("input[name=animation]:checked").attr('value');
+            changeAnimation(id);                
+        }
+    );
+}
+
+</script>
+<style>
+		html, body {
+			width: 100%;
+			height: 100%;
+			margin: 0px;
+			border: 0;
+			overflow: hidden; 
+			display: block;  
+		}
+</style>
+<script type="text/javascript">
+  
+	$(document).ready(
+			function() {
+
+				var canvas = document.getElementById("webglcanvas");
+
+				// create the scene
+				createScene(canvas);
+
+				// initialize the controls
+				document.getElementById('startButton').onclick = function() {
+					
+					changeAnimation("start", "walk");  
+				}
+				document.getElementById('pauseButton').onclick = function() {
+					
+					changeAnimation("pause", "walk");  
+				}
+//				initControls();
+				
+		        // Run the run loop
+		        run();
+			}
+	);
+
+</script>
+
+</head>
+
+<body>
+
+<div id="container">
+    <canvas id="webglcanvas" width=800 height=600></canvas>
+	<div id="title">Super Awesome Game</div>
+</div>
+<br><br>
+<div id="container">
+	<form>
+		<input type="button" name="animation" value="pause" id="pauseButton"><br> 
+		<input type="button" name="animation" value="start" id="startButton"><br> 
+	</form>
+	<div id="hud">
+		<a id="time"></a>
+		<br>
+		<a id="points"></a>
+	</div>
+		
+</div>
+
+
+
+
+
+</body>
+
+
+</html>
